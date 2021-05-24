@@ -1,0 +1,5 @@
+source https://www.nuget.org/api/v2
+
+nuget FSharp.Core
+nuget Amazon.Lambda.AspNetCoreServer 6.0.1
+nuget Giraffe 3.4.0
