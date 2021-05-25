@@ -10,12 +10,9 @@ open Microsoft.Extensions.Logging
 open Microsoft.Extensions.Hosting
 open Giraffe
 
-
-
 // ---------------------------------
 // Config and Main
 // ---------------------------------
-
 
 let configureApp (app : IApplicationBuilder) =
     let env = app.ApplicationServices.GetService<IWebHostEnvironment>()

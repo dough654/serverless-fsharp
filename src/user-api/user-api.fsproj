@@ -11,7 +11,8 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AppHandlers.fs" />
+    <Compile Include="Models\User.fs" />
+    <Compile Include="Handlers\AppHandlers.fs" />
     <Compile Include="Setup.fs" />
   </ItemGroup>
   <ItemGroup>

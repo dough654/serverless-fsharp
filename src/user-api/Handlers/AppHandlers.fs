@@ -5,7 +5,6 @@ open Microsoft.Extensions.Logging
 open Giraffe
 open Microsoft.AspNetCore.Http
 
-
 let indexHandler  =
     fun (next : HttpFunc) (ctx : HttpContext) ->
 
