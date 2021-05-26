@@ -1,5 +1,23 @@
-source https://www.nuget.org/api/v2
+source https://api.nuget.org/v3/index.json
+storage: none
 
-nuget FSharp.Core
+framework: netcoreapp3.1
+
 nuget Amazon.Lambda.AspNetCoreServer 6.0.1
-nuget Giraffe 3.4.0
+nuget FSharp.Core
+nuget Saturn
+nuget Simple.Migrations
+nuget Microsoft.Data.Sqlite
+nuget Dapper
+
+
+// [ FAKE GROUP ]
+group Build
+  source https://api.nuget.org/v3/index.json
+  storage: none
+
+  framework: netstandard2.0
+
+  nuget Fake.Core.Target
+  nuget Fake.IO.FileSystem
+  nuget Fake.DotNet.Cli

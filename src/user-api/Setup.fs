@@ -9,18 +9,19 @@ open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.Hosting
 open Giraffe
+open Saturn
 
 // ---------------------------------
 // Config and Main
 // ---------------------------------
-
+//
 let configureApp (app : IApplicationBuilder) =
     let env = app.ApplicationServices.GetService<IWebHostEnvironment>()
     (match env.IsDevelopment() with
     | true  -> app.UseDeveloperExceptionPage()
-    | false -> app.UseGiraffeErrorHandler AppHandlers.errorHandler)
+    | false -> app.UseDeveloperExceptionPage())
         .UseStaticFiles()
-        .UseGiraffe(AppHandlers.webApp)
+        .UseGiraffe(Router.appRouter)
 
 let configureServices (services : IServiceCollection) =
 
@@ -41,6 +42,20 @@ let configureAppConfiguration (ctx:WebHostBuilderContext) (builder : IConfigurat
     builder.AddJsonFile("appsettings.json", true, true)
         .AddJsonFile((sprintf "appsettings.%s.json" ctx.HostingEnvironment.EnvironmentName), true, true)
         .AddEnvironmentVariables() |> ignore
+
+type config = {
+    connectionString: string
+}
+
+let app = application {
+    url "http://0.0.0.0:8085/"
+    use_router Router.appRouter
+    memory_cache
+    use_static "static"
+    use_gzip
+    use_config (fun _ -> {connectionString = "DataSource=database.sqlite"} ) //TODO: Set development time configuration
+}
+
 
 // ---------------------------------
 // This type is the entry point when running in Lambda. It has similar responsiblities
@@ -73,6 +88,8 @@ type LambdaEntryPoint() =
 // ---------------------------------
 // The main function is used for local development.
 // ---------------------------------
+
+
 [<EntryPoint>]
 let main _ =
     let contentRoot = Directory.GetCurrentDirectory()
@@ -88,4 +105,5 @@ let main _ =
         .ConfigureLogging(configureLogging)
         .Build()
         .Run()
+    run app
     0

@@ -1,3 +1,6 @@
-Giraffe
-Amazon.Lambda.AspNetCoreServer
 FSharp.Core
+Saturn
+
+Dapper
+Microsoft.Data.Sqlite
+Amazon.Lambda.AspNetCoreServer
