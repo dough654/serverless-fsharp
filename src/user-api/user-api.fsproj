@@ -11,8 +11,11 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Models\User.fs" />
-    <Compile Include="Handlers\AppHandlers.fs" />
+    <Compile Include="Database.fs" />
+    <Compile Include="Config.fs" />
+    <Compile Include="Users\UsersModel.fs" />
+     <Compile Include="Users\UsersRepository.fs" />
+     <Compile Include="Users\UsersController.fs" />
     <Compile Include="Router.fs" />
     <Compile Include="Setup.fs" />
   </ItemGroup>
@@ -26,6 +29,7 @@
     <None Include="Readme.md" />
     <Content Include="serverless.yml" />
     <Content Include="build.sh" />
+
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

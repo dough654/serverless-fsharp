@@ -5,7 +5,7 @@ framework: netcoreapp3.1
 
 nuget Amazon.Lambda.AspNetCoreServer 6.0.1
 nuget FSharp.Core
-nuget Saturn
+nuget Giraffe 4.1.0
 nuget Simple.Migrations
 nuget Microsoft.Data.Sqlite
 nuget Dapper

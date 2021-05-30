@@ -7,6 +7,12 @@
       "commands": [
         "dotnet-lambda"
       ]
+    },
+    "saturn.cli": {
+      "version": "0.12.1",
+      "commands": [
+        "saturn"
+      ]
     }
   }
 }
