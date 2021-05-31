@@ -2,7 +2,6 @@ module Router
 
 open Giraffe
 
-
 let webApp: HttpHandler =
     choose [
         subRoute "/users" Users.Controller.routes
